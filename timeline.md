@@ -1,13 +1,13 @@
-Timeline Items
+时间线项
 ==========
 
-When users interact with their timeline, the main way they receive information is in the form of timeline items, otherwise known as cards. Timeline cards display content from various Glassware and swiping forward and backward on Glass reveals more cards in the past and future.
+当用户和时间线进行交互时，他们获取信息的主要方式是时间线项的形式，也就是卡片。时间线卡片显示来自不同 Glassware 的内容，通过前后滑动来翻阅新旧卡片。
 
-You can insert, update, read, and delete timeline cards from a timeline. In addition, you can attach objects to a timeline card, such as a location or media.
+您可以从时间线上插入、更新、读取和删除时间线卡片。此外，您还可以在一张时间线卡片中附带其它对象，比如地理坐标或媒体。
 
-> **Note:** Because timeline cards are central to the user experience, understand the [UI guidelines](ui-guidelines.md) before creating timeline items.
+> **注意:** 时间线卡片是用户体验的中心，因此在创建时间线项前请先了解 [UI 设计指导](ui-guidelines.md)。
 
-Here is an example of a set of timeline cards arranged on a user's timeline:
+以下是一些排列在用户的时间线上的时间线卡片的例子：
 
 ![](https://developers.google.com/glass/images/glass-screens/weather_bundle_1_160.png)
 ![](https://developers.google.com/glass/images/glass-screens/clock_160.png)
@@ -15,9 +15,9 @@ Here is an example of a set of timeline cards arranged on a user's timeline:
 ![](https://developers.google.com/glass/images/glass-screens/picture_uploading_160.png)
 ![](https://developers.google.com/glass/images/glass-screens/hybrid_bundle_flowers_1_160.png)
 
-For a full list of possible operations for timeline items, see the [reference documentation](reference/timeline/index.md).
+关于其它对时间线项的操作，请移步[参考文档](reference/timeline/index.md)。
 
-You can provide options for users to execute actions on timeline cards with [menu items](menu-items.md).
+您也可以通过[菜单项](menu-items.md)向用户提供对时间线卡片执行操作的选项。
 
 
 ## Inserting a timeline item
