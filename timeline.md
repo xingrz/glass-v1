@@ -61,9 +61,9 @@ Content-Length: 303
 
 ![](https://developers.google.com/glass/images/glass-screens/hello_world_320.png)
 
-### Inserting a timeline item with an attachment
+### 插入带附件的时间线项
 
-A picture is worth a thousand words, which is a lot more than you can fit into a timeline item. To this end, you can also attach images and video to a timeline item. Here's an example of how to insert a timeline item with a photo attachment:
+有图有真相，图片能够比文字表达更多信息。因此，您也可以在一个时间线项上附带图像或视频。这是一个创建时间线项同时附带照片的例子：
 
 ```http
 POST /upload/mirror/v1/timeline HTTP/1.1
@@ -84,19 +84,20 @@ Content-Transfer-Encoding: binary
 --mymultipartboundary--
 ```
 
-A timeline item with an attached image looks something like this on Glass:
+一个附带图像的时间线项在眼镜上看起来是这样的：
 
 ![](https://developers.google.com/glass/images/glass-screens/photo_attach_saturn_640.png)
 
-> **Note:** At a low level, attachments are uploaded using [HTTP Multipart](http://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Google APIs client libraries make this easy using [media upload](media-upload.md).
+> **注意:** 在底层，附件通过 [HTTP Multipart](http://www.w3.org/Protocols/rfc1341/7_2_Multipart.html) 上传。使用 Google APIs 客户端库的[媒体上传](media-upload.md)能够简化此操作。
 
-### Attaching video
+### 附带视频
 
-If you are attaching video files to your timeline items, we recommend that you stream the video instead of uploading the entire payload at once. The Google Mirror API supports streaming with HTTP live streaming, progressive download, and the real time streaming protocol (RTSP).
+如果您要附带视频文件到您的时间线项，推荐您使用流来传输视频，而不是一口气上传整个实体。
+Google Mirror API 支持使用 HTTP 实时流，逐步下载以及实时流媒体协议 (RTSP)。
 
-> **Note:** RTSP is frequently blocked by firewalls, so use the other options when possible.
+> **注意:** RTSP 通常会被防火墙封锁，如果可能请使用其它选择。
 
-To stream video, attach the URL to the streaming video with a `content-type` of `video/vnd.google-glass.stream-url` as part of a HTTP multi-part request. For example:
+要通过流传输视频，使用 `video/vnd.google-glass.stream-url` 的 `content-type` 附带流媒体的 URL 作为 HTTP multi-part 请求的一部分。例如：
 
 ```http
 POST /upload/mirror/v1/timeline HTTP/1.1
@@ -116,10 +117,10 @@ http://example.com/path/to/kittens.mp4
 --mymultipartboundary--
 ```
 
-See [supported media formats](http://developer.android.com/guide/appendix/media-formats.html) for a list of supported media types.
+详见[媒体格式支持](http://developer.android.com/guide/appendix/media-formats.html)。
 
 
-## Reading timeline items
+## 读取时间线项
 
 Your service can access all timeline items that it created, and all timeline items that were shared with it. Here's how to [list](reference/timeline/list.md) the timeline items that are visible to your service.
 
