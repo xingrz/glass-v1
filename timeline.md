@@ -20,13 +20,13 @@
 您也可以通过[菜单项](menu-items.md)向用户提供对时间线卡片执行操作的选项。
 
 
-## Inserting a timeline item
+## 插入一个时间线项
 
-To [insert](reference/timeline/insert.md) a timeline item, POST a [JSON representation of a timeline item](reference/timeline/index.md) to the REST endpoint.
+要[插入](reference/timeline/insert.md)一个时间线项，POST 一个 [JSON 格式表示的时间线项](reference/timeline/index.md) 到 REST 接口。
 
-> **Note:** Timeline items last for seven days on a user's Glass and 30 days on Google's servers.
+> **注意:** 时间线项在用户的眼镜上保留 7 天，在 Google 的服务器上保留 30 天。
 
-Most of the fields in a timeline item are optional. In its simplest form, a timeline item contains only a short text message, like in this example:
+时间线项中的大多数字段是可选的。最简单的形式是只包含一个简短的文字信息，举个例子：
 
 ```http
 POST /mirror/v1/timeline HTTP/1.1
@@ -38,7 +38,7 @@ Content-Length: 26
 { "text": "Hello world" }
 ```
 
-On success, you receive a `201 Created` response code with a full copy of the created item. For the previous example, a successful response might look like this:
+如果成功，您会收到一个 `201 Created` 返回码以及刚才所创建项目的完整副本。对于刚刚的例子，一个成功返回大致上是这个样子：
 
 ```http
 HTTP/1.1 201 Created
@@ -57,7 +57,7 @@ Content-Length: 303
 }
 ```
 
-The inserted item that would appear in the user's timeline looks like this:
+插入的项目在用户的时间线上看起来会像这样：
 
 ![](https://developers.google.com/glass/images/glass-screens/hello_world_320.png)
 
