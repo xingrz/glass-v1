@@ -134,7 +134,7 @@ Authorization: Bearer {auth token}
 
 ### 访问附件
 
-您可以通过时间线项名为 [`attachments`](refenence/timeline.md#attachments) 的数组属性访问它的附件，然后通过附件的 [contentUrl](reference/timeline.md#attachments.contentUrl) 属性附件接口(reference/timeline/attachments/get.md)获得它的二进制数据。
+您可以通过时间线项名为 [`attachments`](refenence/timeline.md#attachments) 的数组属性访问它的附件，然后通过附件的 [`contentUrl`](reference/timeline.md#attachments.contentUrl) 属性或[附件接口](reference/timeline/attachments/get.md)获得它的二进制数据。
 
 > **注意:** 和其它 API 接口一样，附件内容受 OAuth 2.0 保护。Google API 客户端库通过媒体下载功能提供对附件二进制内容的访问。
 
