@@ -1,16 +1,16 @@
 Subscriptions
 ==========
 
-The Mirror API allows you to subscribe to notifications that are sent when the user takes specific actions on a Timeline Item or when the user location has been updated. When you subscribe to a notification, you provide a callback URL that processes the notification.
+The Mirror API allows you to [subscribe to notifications](reference/subscriptions/insert.md) that are sent when the user takes specific actions on a [Timeline Item](reference/timeline) or when the user location has been updated. When you subscribe to a notification, you provide a callback URL that processes the notification.
 
-> **Note:** In production, your callback URL must support SSL. For development purposes, we provide an subscription proxy server that can forward notifications to your non-SSL development server.
+> **Note:** In production, your callback URL must support SSL. For development purposes, we provide an [subscription proxy server](subscription-proxy.md) that can forward notifications to your non-SSL development server.
 
 
 ## Receiving notifications
 
-A notification from the Mirror API is sent as a POST request to the subscribed endpoint containing a JSON request body.
+A notification from the Mirror API is sent as a `POST` request to the subscribed endpoint containing a JSON request body.
 
-```http
+```json
 {
   "collection": "timeline",
   "itemId": "3hidvm0xez6r8_dacdb3103b8b604_h8rpllg",
@@ -39,7 +39,7 @@ The Mirror API sends a different notification payload for different events.
 
 The user has shared a timeline item with your Glassware.
 
-```http
+```json
 {
   "collection": "timeline",
   "itemId": "3hidvm0xez6r8_dacdb3103b8b604_h8rpllg",
@@ -54,9 +54,9 @@ The user has shared a timeline item with your Glassware.
 }
 ```
 
-The `itemId` attribute is the `ID` of the shared timeline item, which you can use with Timeline.get to obtain the timeline item. The following example shows a typical timeline item with a photo attachment:
+The `itemId` attribute is the `ID` of the shared timeline item, which you can use with [Timeline.get](reference/timeline/get.md) to obtain the timeline item. The following example shows a typical timeline item with a photo attachment:
 
-```http
+```json
 {
   "id": "3hidvm0xez6r8_dacdb3103b8b604_h8rpllg",
   "attachments": [
@@ -79,13 +79,13 @@ The `itemId` attribute is the `ID` of the shared timeline item, which you can us
 }
 ```
 
-> **Note:** See Contacts for more information about sharing content with contacts.
+> **Note:** See [Contacts](reference/contacts.md) for more information about sharing content with contacts.
 
 ### Reply
 
-The user has replied to your timeline item using the built-in REPLY menu item:
+The user has replied to your timeline item using the built-in `REPLY` menu item:
 
-```http
+```json
 {
   "collection": "timeline",
   "itemId": "3hidvm0xez6r8_dacdb3103b8b604_h8rpllg",
@@ -108,7 +108,7 @@ The `itemId` attribute is set to the `ID` of the item containing:
 
 Example:
 
-```http
+```json
 {
   "kind": "glass#timelineItem",
   "id": "3hidvm0xez6r8_dacdb3103b8b604_h8rpllg",
@@ -130,7 +130,7 @@ Example:
 
 The user has deleted a timeline item:
 
-```http
+```json
 {
   "collection": "timeline",
   "itemId": "3hidvm0xez6r8_dacdb3103b8b604_h8rpllg",
@@ -151,9 +151,9 @@ The `itemId` attribute is set to the ID of the deleted item. The item no longer 
 
 ### Custom menu item selected
 
-The user has selected a custom menu item set by your service:
+The user has selected a [custom menu item](menu-items.md) set by your service:
 
-```http
+```json
 {
   "collection": "timeline",
   "itemId": "3hidvm0xez6r8_dacdb3103b8b604_h8rpllg",
@@ -176,7 +176,7 @@ The `userActions` array contains the list of custom actions that the user took o
 
 A new location is available for the current user:
 
-```http
+```json
 {
   "collection": "locations",
   "itemId": "latest",
@@ -186,9 +186,9 @@ A new location is available for the current user:
 }
 ```
 
-When your Glassware receives a location update, send a request to the glass.locations.get endpoint to retrieve the latest known location. Your Glassware receives location updates every ten minutes.
+When your Glassware receives a location update, send a request to the [glass.locations.get](reference/locations/get.md) endpoint to retrieve the latest known location. Your Glassware receives location updates every ten minutes.
 
-> **Note:** Retrieving location information requires the https://www.googleapis.com/auth/glass.location scope.
+> **Note:** Retrieving location information requires the `https://www.googleapis.com/auth/glass.location` scope.
 
 ----------
 
