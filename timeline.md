@@ -122,7 +122,7 @@ http://example.com/path/to/kittens.mp4
 
 ## 读取时间线项
 
-Your service can access all timeline items that it created, and all timeline items that were shared with it. Here's how to [list](reference/timeline/list.md) the timeline items that are visible to your service.
+您的服务可以访问它创建的以及分享给它的所有时间线项。以下展示了如何[列出](reference/timeline/list.md)对您的服务可见的时间线项。
 
 ```http
 GET /mirror/v1/timeline HTTP/1.1
@@ -130,13 +130,13 @@ Host: www.googleapis.com
 Authorization: Bearer {auth token}
 ```
 
-You can use other REST operations to [get](reference/timeline/get.md), [update](reference/timeline/update.md) and [delete](reference/timeline/delete.md) timeline items.
+您可以使用其它 REST 操作来[读取](reference/timeline/get.md)、[更新](reference/timeline/update.md)或[删除](reference/timeline/delete.md)时间线项。
 
-### Accessing attachments
+### 访问附件
 
-You can access attachments to a timeline item through an array property named [attachments](refenence/timeline.md#attachments). You can then obtain the binary data of an attachment through the [contentUrl](reference/timeline.md#attachments.contentUrl) property of the attachment or with the [attachments endpoint](reference/timeline/attachments/get.md).
+您可以通过时间线项名为 [`attachments`](refenence/timeline.md#attachments) 的数组属性访问它的附件，然后通过附件的 [contentUrl](reference/timeline.md#attachments.contentUrl) 属性附件接口(reference/timeline/attachments/get.md)获得它的二进制数据。
 
-> **Note:** The attachment content is protected by OAuth 2.0, just like other calls to the API endpoints. Google API client libraries provide access to the binary content of attachments using the media download feature.
+> **注意:** 和其它 API 接口一样，附件内容受 OAuth 2.0 保护。Google API 客户端库通过媒体下载功能提供对附件二进制内容的访问。
 
 ```http
 GET /mirror/v1/timeline/{itemId}/attachments/{attachmentId} HTTP/1.1
@@ -145,7 +145,7 @@ Authorization: Bearer {auth token}
 ```
 
 
-## Bundling cards
+## 捆绑的卡片
 
 Bundling allows you to combine many related cards into a bundle cover card that is expandable and collapsible. Bundles are distinguished from normal timeline cards by a page curl in the upper right corner of the bundle's cover card.
 
