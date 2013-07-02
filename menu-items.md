@@ -37,16 +37,11 @@ Content-Length: 303
 
 ## 定义自定菜单项
 
-Built-in actions may not always be enough. Many services need to expose their own 
-specific menu items. This is where custom actions come into play.
+内建动作总会不够用的，许多服务需要提供他们特定的菜单项，这就需要自定动作。
 
-Create a custom menu item by specifying a `menuItem.action` of `CUSTOM` and a 
-`menuItem.id`. When your user triggers one of your custom menu items, a [notification](subscriptions.md) 
-is sent to your service with the `menuItem.id` populated. This allows you to 
-determine the source of the notification.
+通过将 `menuItem.action` 设定为 `CUSTOM` 可以建立自定菜单项。当您的用户触发您的其中一个自定菜单项，一个带有 `menuItem.id` 的[通知](subscriptions.md)会被发送到您的服务，允许您区分通知的来源。
 
-You must also populate `menuItem.menuValue` to specify an `iconUrl` and `displayName` 
-that will appear on the glass device.
+您也必须填写 `menuItem.menuValue` 来指定一个将出现在眼镜上的图标地址 `iconUrl` 和显示名称 `displayName`。
 
 ```http
 HTTP/1.1 201 Created
