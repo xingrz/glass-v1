@@ -1,14 +1,14 @@
 订阅
 ==========
 
-The Mirror API allows you to [subscribe to notifications](reference/subscriptions/insert.md) that are sent when the user takes specific actions on a [Timeline Item](reference/timeline) or when the user location has been updated. When you subscribe to a notification, you provide a callback URL that processes the notification.
+Mirror API 允许您[订阅通知](reference/subscriptions/insert.md)。通知通常会在用户在[时间线项](reference/timeline)上做出特定动作或用户的地理位置更新时被触发。当您订阅了一个通知后，您需要提供一个回调 URL 来处理这个通知。
 
-> **Note:** In production, your callback URL must support SSL. For development purposes, we provide an [subscription proxy server](subscription-proxy.md) that can forward notifications to your non-SSL development server.
+> **注意:** 在生产环境中，您的回调 URL 必须支持 SSL。对于开发，我们提供了一个[订阅代理服务器](subscription-proxy.md)来将通知转发到您的非 SSL 开发服务器。
 
 
 ## 接收通知
 
-A notification from the Mirror API is sent as a `POST` request to the subscribed endpoint containing a JSON request body.
+从 Mirror API 来的通知会以 `POST` 请求的方式发送给订阅接口，包含一个 JSON 请求体。
 
 ```json
 {
@@ -26,9 +26,9 @@ A notification from the Mirror API is sent as a `POST` request to the subscribed
 }
 ```
 
-Your service must respond to the API with a `200 OK` HTTP status code if no error occurred. If your service responds with an error code, the Mirror API might try to resend the notification to your service.
+假如没有发生错误，您的服务必须向 API 返回一个 `200 OK` HTTP 状态码。如果您的应用返回了一个错误码，Mirror API 可能会尝试向您的服务再次发送通知。
 
-> **Note:** The connection will time out after 10 seconds. If a long process is required, respond right away and do the process in another thread.
+> **注意:** 连接超时时间是 10 秒。如果需要较长的处理事件，请立即返回并在另一条线程上执行处理。
 
 
 ## 通知类型
@@ -100,11 +100,11 @@ Mirror API 会根据不同事件发送不同的通知请求。
 }
 ```
 
-The `itemId` attribute is set to the `ID` of the item containing:
+其中 `itemId` 属性是该项的 `ID`，包含：
 
-* `inReplyTo` attribute set to the `ID` of the timeline item it is a reply to.
-* `text` attribute set to the text transcription.
-* `recipients` attribute set to the `creator` of the timeline item it is a reply to, if it exists.
+* `inReplyTo` 属性是所回复的时间线项的 `ID`。
+* `text` 属性是听写出来的文字。
+* `recipients` 属性是所回复的时间线项的 `creator`（如果存在）。
 
 示例：
 
