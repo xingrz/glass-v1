@@ -145,20 +145,21 @@ Authorization: Bearer {auth token}
 ```
 
 
-## 捆绑的卡片
+## 卡片组
 
-Bundling allows you to combine many related cards into a bundle cover card that is expandable and collapsible. Bundles are distinguished from normal timeline cards by a page curl in the upper right corner of the bundle's cover card.
+卡片组让您能够将多个相关联的卡片组合起来，并且能够展开和折叠。卡片组与普通时间线卡片的不同之处在于其封面的右上角有一个折角。
 
-A user taps on a bundle cover card to expand the bundled cards into a sub-timeline that is independent of the main timeline. The user can swipe back and forth on the sub-timeline to view the cards and can return to the main timeline by swiping down. The following images show the bundle cover card with the page curl at the top right corner and two bundled cards below it.
+用户可以轻触卡片组来将它展开成一个与主时间线独立的子时间线。用户可以前后滑动来查看卡片，或向下滑动返回主时间线。下列图片展示了右上角带有折角的卡片组，以及它下面的两张子卡片。
 
 ![](https://developers.google.com/glass/images/glass-screens/hybrid_bundle_flowers_1_320.jpg)
+
 ![](https://developers.google.com/glass/images/glass-screens/hybrid_bundle_flowers_2_320.jpg)
 ![](https://developers.google.com/glass/images/glass-screens/hybrid_bundle_flowers_3_320.jpg)
   
-There are two ways to bundle content: paging and threading.
+有两种方式可以组合卡片：分页和会话方式。
 
-Use paging for content that does not fit on a single timeline card. Paged cards in a bundle all share the same `timelineId` and therefore have the same set of menu items. To paginate cards, specify values in the [`timelineItem.htmlPages[]`](reference/timeline.md#htmlPages) property.
+分页方式用于展示不足以在一张卡片中容纳的内容。分页卡片在卡片组中共用同一个 `timelineId` 和一样的菜单项。要对卡片进行分页，可以指定 [`timelineItem.htmlPages[]`](reference/timeline.md#htmlPages) 属性的值。
 
-Use threading to bundle related items like email threads. To thread timeline cards, create them with the same value for [bundleId](reference/timeline.md#bundleId). The most recently added item is the bundle's cover card.
+会话方式用于展示类似于 Email 会话的卡片。要以会话组织时间线卡片，使用相同的 [`bundleId`](reference/timeline.md#bundleId) 来创建他们。最近一个添加的会作为卡片组封面。
 
-> **Note:** To set a specific timeline item as the bundle cover card, set its [isBundleCover](reference/timeline.md#isBundleCover) property to `true`.
+> **注意:** 要将特定时间线项设为卡片组，只需将它的 [`isBundleCover`](reference/timeline.md#isBundleCover) 属性设为 `true`。
