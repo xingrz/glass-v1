@@ -35,7 +35,7 @@ Authorization: Bearer {auth token}
 Content-Type: application/json
 Content-Length: 26
 
-{ "text": "Hello world" }
+{ "text": "Hello Glass.CM" }
 ```
 
 如果成功，您会收到一个 `201 Created` 返回码以及刚才所创建项目的完整副本。对于刚刚的例子，一个成功返回大致上是这个样子：
@@ -53,7 +53,7 @@ Content-Length: 303
  "created": "2012-09-25T23:28:43.192Z",
  "updated": "2012-09-25T23:28:43.192Z",
  "etag": "\"G5BI0RWvj-0jWdBrdWrPZV7xPKw/t25selcGS3uDEVT6FB09hAG-QQ\"",
- "text": "Hello world"
+ "text": "Hello Glass.CM"
 }
 ```
 
@@ -113,7 +113,7 @@ Content-Type: application/json; charset=UTF-8
 --mymultipartboundary
 Content-Type: video/vnd.google-glass.stream-url
 
-http://example.com/path/to/kittens.mp4
+http://glass.cm/intro.mp4
 --mymultipartboundary--
 ```
 
