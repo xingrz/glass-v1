@@ -1,4 +1,4 @@
-Subscriptions
+订阅
 ==========
 
 The Mirror API allows you to [subscribe to notifications](reference/subscriptions/insert.md) that are sent when the user takes specific actions on a [Timeline Item](reference/timeline) or when the user location has been updated. When you subscribe to a notification, you provide a callback URL that processes the notification.
@@ -6,7 +6,7 @@ The Mirror API allows you to [subscribe to notifications](reference/subscription
 > **Note:** In production, your callback URL must support SSL. For development purposes, we provide an [subscription proxy server](subscription-proxy.md) that can forward notifications to your non-SSL development server.
 
 
-## Receiving notifications
+## 接收通知
 
 A notification from the Mirror API is sent as a `POST` request to the subscribed endpoint containing a JSON request body.
 
@@ -31,13 +31,13 @@ Your service must respond to the API with a `200 OK` HTTP status code if no erro
 > **Note:** The connection will time out after 10 seconds. If a long process is required, respond right away and do the process in another thread.
 
 
-## Notification types
+## 通知类型
 
-The Mirror API sends a different notification payload for different events.
+Mirror API 会根据不同事件发送不同的通知请求。
 
-### Shared timeline item
+### 分享的时间线项
 
-The user has shared a timeline item with your Glassware.
+用户与您的 Glassware 分享了一个时间线项：
 
 ```json
 {
@@ -54,7 +54,7 @@ The user has shared a timeline item with your Glassware.
 }
 ```
 
-The `itemId` attribute is the `ID` of the shared timeline item, which you can use with [Timeline.get](reference/timeline/get.md) to obtain the timeline item. The following example shows a typical timeline item with a photo attachment:
+其中 `itemId` 字段是所分享的时间线项的 `ID`，您可以使用它从 [Timeline.get](reference/timeline/get.md) 获取时间线项。一个典型的带照片附件的时间线项：
 
 ```json
 {
@@ -79,11 +79,11 @@ The `itemId` attribute is the `ID` of the shared timeline item, which you can us
 }
 ```
 
-> **Note:** See [Contacts](reference/contacts.md) for more information about sharing content with contacts.
+> **注意:** 更多关于和联系人分享内容的信息详见[联系人](reference/contacts.md)。
 
-### Reply
+### 回复
 
-The user has replied to your timeline item using the built-in `REPLY` menu item:
+用户使用内建的 `REPLY` 菜单项回复了您的时间线项：
 
 ```json
 {
@@ -106,7 +106,7 @@ The `itemId` attribute is set to the `ID` of the item containing:
 * `text` attribute set to the text transcription.
 * `recipients` attribute set to the `creator` of the timeline item it is a reply to, if it exists.
 
-Example:
+示例：
 
 ```json
 {
@@ -126,9 +126,9 @@ Example:
 }
 ```
 
-### Delete
+### 删除
 
-The user has deleted a timeline item:
+用户删除了时间线项：
 
 ```json
 {
@@ -149,9 +149,9 @@ The `itemId` attribute is set to the ID of the deleted item. The item no longer 
 
 > **Note:** If the user deletes an item from their timeline, it's recommended that you delete this content from your systems too.
 
-### Custom menu item selected
+### 自定菜单项被选择
 
-The user has selected a [custom menu item](menu-items.md) set by your service:
+用户选择了您的服务设定的[自定菜单项](menu-items.md)：
 
 ```json
 {
@@ -172,9 +172,9 @@ The `itemId` attribute is set to the ID of the menu item that the user selected.
 
 The `userActions` array contains the list of custom actions that the user took on this item. Your service should handle those actions accordingly.
 
-### Location update
+### 地理位置更新
 
-A new location is available for the current user:
+当前用户有新的地理位置：
 
 ```json
 {
@@ -188,7 +188,7 @@ A new location is available for the current user:
 
 When your Glassware receives a location update, send a request to the [glass.locations.get](reference/locations/get.md) endpoint to retrieve the latest known location. Your Glassware receives location updates every ten minutes.
 
-> **Note:** Retrieving location information requires the `https://www.googleapis.com/auth/glass.location` scope.
+> **注意:** 接收地理位置信息需要 `https://www.googleapis.com/auth/glass.location` 权限。
 
 ----------
 
