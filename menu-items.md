@@ -12,15 +12,9 @@
 
 ## 添加内建菜单项
 
-You can add built-in menu items to your timeline items by populating the 
-[`menuItems array`](reference/timeline.md#menuItems) when you insert them. 
-To use a built-in menu item, you only need to populate the [`action`](reference/timeline.md#menuItems.action) 
-of each `menuItem`.
+您可以通过向 [`menuItems`](reference/timeline.md#menuItems) 数组插入元素来向您的时间线项添加内建菜单项。要使用内建菜单项，您仅需设定每个 `menuItem` 的 [`action`](reference/timeline.md#menuItems.action)。
 
-> **Note:** When using the `REPLY` or `REPLY_ALL` built-in menu item, do not 
-require users to speak a limited set of options, such as possible moves in a 
-game or commands for a service. These menu items are intended to capture free 
-form voice input.
+> **注意:** 当使用 `REPLY` 或 `REPLY_ALL` 内建菜单项时，不要要求用户说出特定的选项，比如游戏中的某些动作或服务中的一些指令。这些菜单项用于捕捉自由的语音输入。
 
 ```http
 HTTP/1.1 201 Created
@@ -29,7 +23,7 @@ Content-Type: application/json
 Content-Length: 303
 
 {
-  "text": "Hello Glass.CM",
+  "text": "嗨！Glass.CM",
   "menuItems": [
     {
       "action": "REPLY"
@@ -38,8 +32,7 @@ Content-Length: 303
 }
 ```
 
-> **Note:** The [reference documentation](reference/timeline.md#menuItems.action) 
-contains a detailed description of the available built in actions.
+> **注意:** [参考文档](reference/timeline.md#menuItems.action)包含了其它内建动作的详细描述。
 
 
 ## 定义自定菜单项
@@ -62,29 +55,28 @@ Content-Type: application/json
 Content-Length: 303
 
 {
-  "text": "Hello Glass.CM",
+  "text": "嗨！Glass.CM",
   "menuItems": [
     {
       "action": "CUSTOM",
-      "id": "complete"
+      "id": "visit"
       "values": [{
-        "displayName": "Complete",
-        "iconUrl": "http://glass.cm/icons/complete.png"
+        "displayName": "访问网站",
+        "iconUrl": "http://glass.cm/favicon.png"
       }]
     }
   ]
 }
 ```
 
-> **Note:** For best results, use a PNG icon image that is 50 pixels square 
-with a transparent background.
+> **注意:** 使用 50 像素正方形、透明背景的 PNG 图标能够取得最好的效果。
 
 
 ## 允许用户固定您的时间线卡片
 
 您可以创建一个让您的用户固定时间线卡片的菜单项。固定后时间线卡片将一直显示在主时钟卡片的左侧。用户也可以使用同一个菜单项摘下卡片。
 
-固定是一个内建菜单项，因此您要做的只是对一个 `menuItem` 提供 `TOGGLE_PINNED` [动作](reference/timeline.md#menuItems.action)。
+固定是一个内建菜单项，因此您仅需对提供一个 `TOGGLE_PINNED` [动作](reference/timeline.md#menuItems.action)的 `menuItem`。
 
 ```http
 HTTP/1.1 201 Created
@@ -93,7 +85,7 @@ Content-Type: application/json
 Content-Length: 303
 
 {
-  "text": "You can pin or unpin this card.",
+  "text": "您可以固定或摘下这张卡片。",
   "menuItems": [
     {
       "action": "TOGGLE_PINNED"
