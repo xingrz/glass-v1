@@ -163,3 +163,9 @@ Authorization: Bearer {auth token}
 会话方式用于展示类似于 Email 会话的卡片。要以会话组织时间线卡片，使用相同的 [`bundleId`](reference/timeline.md#bundleId) 来创建他们。最近一个添加的会作为卡片组封面。
 
 > **注意:** 要将特定时间线项设为卡片组，只需将它的 [`isBundleCover`](reference/timeline.md#isBundleCover) 属性设为 `true`。
+
+----------
+
+除非特别[说明](https://developers.google.com/readme/policies)，本页内容使用 [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/) 授权，示例代码使用 [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0) 授权。
+
+原文最后更新：2013 年 6 月 26 日。
