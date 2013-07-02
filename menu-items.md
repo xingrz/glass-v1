@@ -29,7 +29,7 @@ Content-Type: application/json
 Content-Length: 303
 
 {
-  "text": "Hello world",
+  "text": "Hello Glass.CM",
   "menuItems": [
     {
       "action": "REPLY"
@@ -62,14 +62,14 @@ Content-Type: application/json
 Content-Length: 303
 
 {
-  "text": "Hello world",
+  "text": "Hello Glass.CM",
   "menuItems": [
     {
       "action": "CUSTOM",
       "id": "complete"
       "values": [{
         "displayName": "Complete",
-        "iconUrl": "http://example.com/icons/complete.png"
+        "iconUrl": "http://glass.cm/icons/complete.png"
       }]
     }
   ]
@@ -82,12 +82,9 @@ with a transparent background.
 
 ## 允许用户固定您的时间线卡片
 
-You can create a menu item that lets your users pin the timeline card, which 
-permanently displays the timeline card to the left of the main clock card. 
-Users can unpin the card as well, by using the same menu item.
+您可以创建一个让您的用户固定时间线卡片的菜单项。固定后时间线卡片将一直显示在主时钟卡片的左侧。用户也可以使用同一个菜单项摘下卡片。
 
-The pinning menu item is a built-in menu item, so all you need to do is provide 
-the `TOGGLE_PINNED` [action](reference/timeline.md#menuItems.action) for a `menuItem`.
+固定是一个内建菜单项，因此您要做的只是对一个 `menuItem` 提供 `TOGGLE_PINNED` [动作](reference/timeline.md#menuItems.action)。
 
 ```http
 HTTP/1.1 201 Created
@@ -97,12 +94,12 @@ Content-Length: 303
 
 {
   "text": "You can pin or unpin this card.",
- "menuItems": [
+  "menuItems": [
     {
       "action": "TOGGLE_PINNED"
     }
-  ...
- ]
+    ...
+  ]
 }
 ```
 
