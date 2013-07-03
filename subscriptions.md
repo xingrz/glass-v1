@@ -145,9 +145,9 @@ Mirror API 会根据不同事件发送不同的通知请求。
 }
 ```
 
-The `itemId` attribute is set to the ID of the deleted item. The item no longer contains metadata other than its ID and the `isDeleted` property.
+其中 `itemId` 属性是被删除项的 ID。该项除了 ID 和 `isDeleted` 属性外将不在包含其它数据。
 
-> **Note:** If the user deletes an item from their timeline, it's recommended that you delete this content from your systems too.
+> **注意:** 如果用户从他们的时间线上删除了一个项，建议您同时在您的服务器上删除对应的内容。
 
 ### 自定菜单项被选择
 
@@ -168,9 +168,9 @@ The `itemId` attribute is set to the ID of the deleted item. The item no longer 
 }
 ```
 
-The `itemId` attribute is set to the ID of the menu item that the user selected.
+其中 `itemId` 属性是用户所选择的菜单项的 ID。
 
-The `userActions` array contains the list of custom actions that the user took on this item. Your service should handle those actions accordingly.
+`userActions` 数组包含了用户在该项上做出的自定动作的列表，您的服务需要处理这些动作。
 
 ### 地理位置更新
 
@@ -186,7 +186,7 @@ The `userActions` array contains the list of custom actions that the user took o
 }
 ```
 
-When your Glassware receives a location update, send a request to the [glass.locations.get](reference/locations/get.md) endpoint to retrieve the latest known location. Your Glassware receives location updates every ten minutes.
+当您的 Glassware 收到一个地理位置更新后需要发送一个请求到 [glass.locations.get](reference/locations/get.md) 接口来获取最新的已知地理位置。您的 Glassware 会每 10 分钟收到地理位置更新。
 
 > **注意:** 接收地理位置信息需要 `https://www.googleapis.com/auth/glass.location` 权限。
 
