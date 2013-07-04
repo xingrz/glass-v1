@@ -17,10 +17,10 @@ used to acquire an access and refresh tokens for your server.
 3. 在您的 API 项目中选择 **API Access** 标签页，并点击 **Create an OAuth 2.0 client ID**。
 4. 在 **Branding Information** 部分命名您的应用（比如：我的 Glass 服务），然后点击 **Next**。您也可以顺便提供一个产品 Logo。
 5. 在 **Client ID Settings** 部分进行下列操作：
-     a. 选择 **Web application** 作为 **Application type**。
-     b. 点击标题旁边的 **more options**，**Your site or hostname**。
-     c. 在 **Authorized Redirect URIs** 和 **JavaScript origins** 字段中列出您的服务器名称。
-     d. 点击 **Create Client ID**。
+  1. 选择 **Web application** 作为 **Application type**。
+  2. 点击标题旁边的 **more options** ， **Your site or hostname**。
+  3. 在 **Authorized Redirect URIs** 和 **JavaScript origins** 字段中列出您的服务器名称。
+  4. 点击 **Create Client ID**。
 6. 在 **API Access** 页面找到 **Client ID for Web applications** 并记下 **Client ID** 和 **Client Secret** 的值。
 
 
@@ -219,7 +219,7 @@ function getAuthorizationUrl($userId, $state) {
 }
 
 /**
- * Retrieve credentials using the provided authorization code.
+ * 使用所提供的 authorization code 获取凭证。
  *
  * This function exchanges the authorization code for an access token and
  * queries the UserInfo API to retrieve the user's Google ID. If a
@@ -229,19 +229,17 @@ function getAuthorizationUrl($userId, $state) {
  * database for one and returns it if found or throws a NoRefreshTokenException
  * with the authorization URL to redirect the user to.
  *
- * @param String authorizationCode Authorization code to use to retrieve an access
- *                                 token.
- * @param String state State to set to the authorization URL in case of error.
- * @return String Json representation of the OAuth 2.0 credentials.
- * @throws NoRefreshTokenException No refresh token could be retrieved from
- *         the available sources.
+ * @param String authorizationCode 用于获取 access token 的 authorization code
+ * @param String state 为了避免错误而附加在授权 URL 中的状态码
+ * @return String OAuth 2.0 凭证的 JSON 表示
+ * @throws NoRefreshTokenException 从可用来源无法获取 refresh token
  */
 function getCredentials($authorizationCode, $state) {
   $userId = '';
   try {
     $credentials = exchangeCode($authorizationCode);
     $userInfo = getUserInfo($credentials);
-    $userId = $userInfo->getId();
+    $userId = $userInfo -> getId();
     $credentialsArray = json_decode($credentials, true);
     if (isset($credentialsArray['refresh_token'])) {
       storeCredentials($userId, $credentials);
@@ -255,16 +253,16 @@ function getCredentials($authorizationCode, $state) {
       }
     }
   } catch (CodeExchangeException $e) {
-    print 'An error occurred during code exchange.';
-    // Glass services should try to retrieve the user and credentials for the current
-    // session.
-    // If none is available, redirect the user to the authorization URL.
-    $e->setAuthorizationUrl(getAuthorizationUrl($userId, $state));
+    print '授权码交换时发生错误。';
+    // Glass 服务应当尝试获取当前会话的用户和凭证
+    // 如果不可用，重定向用户到授权 URL
+    $e -> setAuthorizationUrl(getAuthorizationUrl($userId, $state));
     throw $e;
   } catch (NoUserIdException $e) {
-    print 'No user ID could be retrieved.';
+    print '没有获取到用户 ID。';
   }
-  // No refresh token has been retrieved.
+  
+  // 没有获取到 refresh token
   $authorizationUrl = getAuthorizationUrl($userId, $state);
   throw new NoRefreshTokenException($authorizationUrl);
 }
@@ -295,10 +293,9 @@ The following code snippets show how to instantiate and authorize a Google Mirro
 service object and send a request to the Google Mirror API to retrieve a timeline 
 item's metadata.
 
-### Instantiate a service object
+### 实例化服务对象
 
-This code sample shows how to instantiate a service object and then authorize it to 
-make API requests.
+以下代码演示了如何实例化一个服务对象并授权它发起 API 请求。
 
 ```php
 <?php
@@ -310,15 +307,15 @@ require_once "google-api-php-client/src/contrib/Google_MirrorService.php";
 // ...
 
 /**
- * Build a Mirror service object.
+ * 构建一个 Mirror 服务对象。
  *
- * @param String credentials Json representation of the OAuth 2.0 credentials.
- * @return Google_MirrorService service object.
+ * @param string credentials OAuth 2.0 凭证的 JSON 表示
+ * @return Google_MirrorService 服务对象
  */
 function buildService($credentials) {
   $apiClient = new Google_Client();
-  $apiClient->setUseObjects(true);
-  $apiClient->setAccessToken($credentials);
+  $apiClient -> setUseObjects(true);
+  $apiClient -> setAccessToken($credentials);
   return new Google_MirrorService($apiClient);
 }
 
@@ -341,24 +338,23 @@ More Google Mirror API operations are documented in the [API Reference](referenc
 
 ```php
 /**
- * Print a timeline item's metadata.
+ * 打印一个时间线项的元数据。
  *
- * @param Google_MirrorService $service Mirror service instance.
- * @param string $itemId ID of the timeline item to print metadata for.
+ * @param Google_MirrorService $service Mirror 服务实例
+ * @param string $itemId 要打印元数据的时间线项的 ID
  */
 function printTimelineItem($service, $itemId) {
   try {
-    $item = $service->timeline->get($itemId);
+    $item = $service -> timeline->get($itemId);
 
-    print "Text: " . $item->getText() . "\n";
-    print "HTML: " . $item->getHtml() . "\n";
+    print "文本: " . $item -> getText() . "\n";
+    print "HTML: " . $item -> getHtml() . "\n";
   } catch (apiAuthException) {
-    // Credentials have been revoked.
-    // TODO: Redirect the user to the authorization URL and/or remove
-    //       the credentials from the database.
+    // 凭证已被撤销
+    // TODO: 重定向用户到授权 URL，并且/或者从数据库中删除凭证
     throw new RuntimeException('Not implemented!');
   } catch (apiException $e) {
-    print "An error occurred: " . $e->getMessage();
+    print "发生错误: " . $e -> getMessage();
   }
 }
 ```
