@@ -29,13 +29,13 @@ To allow users to share timeline items with your Glassware, insert a contact by
 POSTing a [JSON representation of a contact](reference/contacts) to the 
 [insert REST endpoint](reference/contacts/insert.md).
 
-All contacts must specify an id, which identifies the contact to the Glassware 
+All contacts must specify an `id`, which identifies the contact to the Glassware 
 receiving the [notifications](subscriptions.md). You must also specify a 
 `displayName` and at least one `imageUrls`, which Glass uses to display the 
 contact information to the user.
 
 > **注意:** For best results, use a PNG icon image that is 640 by 360 pixels 
-  with a transparent background for imageUrls.
+  with a transparent background for `imageUrls`.
   
 ```http
 POST /mirror/v1/contacts HTTP/1.1
