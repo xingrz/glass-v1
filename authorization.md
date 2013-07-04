@@ -1,4 +1,4 @@
-Authorizing Requests
+授权请求
 ==========
 
 Requests to the Google Mirror API must be authorized using OAuth 2.0 credentials. 
@@ -8,26 +8,23 @@ passing a one-time authorization code from your client to your server that is
 used to acquire an access and refresh tokens for your server.
 
 
-## Create a client ID and client secret
+## 创建一个 Client ID 和 Client Secret
 
-First, you need to activate the Google Mirror API for your app. You can do this 
-for your API project in the [Google APIs Console](https://code.google.com/apis/console/).
+首先，您需要激活您的应用的 Google Mirror API。您可以在 [Google APIs Console](https://code.google.com/apis/console/) 中完成此操作。
 
-1. Create an API project in the [Google APIs Console](https://code.google.com/apis/console/).
-2. Select the **Services** tab in your API project, and enable the Google Mirror API.
-3. Select the **API Access** tab in your API project, and click **Create an OAuth 2.0 client ID**.
-4. In the **Branding Information** section, provide a name for your application 
-   (e.g. "My Glass service"), and click **Next**. Providing a product logo is optional.
-5. In the **Client ID Settings** section, do the following:
-     a. Select **Web application** for the **Application type**.
-     b. Click the **more options** link next to the heading, **Your site or hostname**.
-     c. List your hostname in the **Authorized Redirect URIs** and **JavaScript origins** fields.
-     d. Click **Create Client ID**.
-6. In the **API Access** page, locate the section **Client ID for Web applications** and note 
-   the **Client ID** and **Client Secret** values.
+1. 在 [Google APIs Console](https://code.google.com/apis/console/) 中创建一个 API 项目。
+2. 在您的 API 项目中选择 **Services** 标签页，并启用 Google Mirror API。
+3. 在您的 API 项目中选择 **API Access** 标签页，并点击 **Create an OAuth 2.0 client ID**。
+4. 在 **Branding Information** 部分命名您的应用（比如：我的 Glass 服务），然后点击 **Next**。您也可以顺便提供一个产品 Logo。
+5. 在 **Client ID Settings** 部分进行下列操作：
+     a. 选择 **Web application** 作为 **Application type**。
+     b. 点击标题旁边的 **more options**，**Your site or hostname**。
+     c. 在 **Authorized Redirect URIs** 和 **JavaScript origins** 字段中列出您的服务器名称。
+     d. 点击 **Create Client ID**。
+6. 在 **API Access** 页面找到 **Client ID for Web applications** 并记下 **Client ID** 和 **Client Secret** 的值。
 
 
-## Handling authorization requests
+## 处理授权请求
 
 When a user loads your application for the first time, they are presented with 
 a dialog to grant permission for your application to access their Google Glass 
@@ -35,12 +32,12 @@ account with the requested permission scopes. After this initial authorization,
 the user is only presented with the permission dialog if your app's client ID 
 changes or the requested scopes have changed.
 
-### Authenticate the user
+### 授权用户
 
 This initial sign-in returns an authorization result object that contains an 
 *authorization code* if successful.
 
-### Exchange the authorization code for an access token
+### 凭 authorization code 换取 access token
 
 The authorization code is a one-time code that your server can exchange for 
 an *access token*. This access token is passed to the Google Mirror API to 
@@ -276,7 +273,7 @@ function getCredentials($authorizationCode, $state) {
 
 _译注：其它语言的示例请参考[原文](https://developers.google.com/glass/authorization)。_
 
-### Authorizing with stored credentials
+### 授权和保存凭证
 
 When users visit your app after a successful first-time authorization flow, your 
 application can use a stored refresh token to authorize requests without prompting 
@@ -288,7 +285,7 @@ token is revoked or is otherwise invalid, you'll need to catch this and take
 appropriate action.
 
 
-## Using OAuth 2.0 Credentials
+## 使用 OAuth 2.0 凭证
 
 Once OAuth 2.0 credentials have been retrieved as shown in the previous section, 
 they can be used to authorize a Google Mirror API service object and send requests 
