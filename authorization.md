@@ -59,7 +59,7 @@ stores this refresh token (generally in a database on your server) for later use
 The following code samples demonstrate exchanging an authorization code for an 
 access token with offline access and storing the refresh token.
 
-_The getCredentials function retrieves OAuth 2.0 Credentials starting from the 
+_The `getCredentials` function retrieves OAuth 2.0 Credentials starting from the 
 provided authorization code. If no refresh token could be retrieved, an exception 
 is raised along with an authorization URL to redirect the user to in order to 
 request offline access._
