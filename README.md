@@ -3,7 +3,7 @@ Google Mirror API（中文版）
 
 ![](https://developers.google.com/glass/images/headline.jpg)
 
-## 阅读快速上手指南学习[如何编写 Glassware](quickstart)**
+## 阅读快速上手指南学习[如何编写 Glassware](quickstart)
 
 ### [了解 Google Glass 能做什么](overview)
 
