@@ -194,4 +194,4 @@ Mirror API 会根据不同事件发送不同的通知请求。
 
 _除非特别[说明](https://developers.google.com/readme/policies)，本页内容使用 [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/) 授权，示例代码使用 [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0) 授权。_
 
-_原文最后更新：2013 年 6 月 26 日。_
+_[原文](https://developers.google.com/glass/subscriptions)最后更新：2013 年 6 月 26 日。_
