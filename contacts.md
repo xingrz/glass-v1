@@ -23,7 +23,7 @@ There are two ways that your Glassware can use contacts:
   [subscribe to timeline notifications](subscriptions.md#分享图片).
 
 
-## Creating a contact
+## 创建联系人
 
 To allow users to share timeline items with your Glassware, insert a contact by 
 POSTing a [JSON representation of a contact](reference/contacts) to the 
@@ -34,7 +34,7 @@ receiving the [notifications](subscriptions.md). You must also specify a
 `displayName` and at least one `imageUrls`, which Glass uses to display the 
 contact information to the user.
 
-> **Note:** For best results, use a PNG icon image that is 640 by 360 pixels 
+> **注意:** For best results, use a PNG icon image that is 640 by 360 pixels 
   with a transparent background for imageUrls.
   
 ```http
@@ -54,7 +54,7 @@ Content-Length: {length}
 To find out more about how to handle notifications from [shared timeline items](subscriptions.md#分享图片),
 
 
-## How sharing works
+## 如何分享
 
 Once you create a sharing contact, sharing timeline cards follows this general flow:
 
@@ -68,7 +68,7 @@ Once you create a sharing contact, sharing timeline cards follows this general f
 4. You modify the shared timeline card and update the existing timeline card with 
    [Timeline.update](reference/timeline/update.md).
 
-> **Note:** You should add identifying branding for your Glassware to distinguish the copied timeline item from the original timeline item. Always update the copied timeline item instead of inserting a new one.
+> **注意:** You should add identifying branding for your Glassware to distinguish the copied timeline item from the original timeline item. Always update the copied timeline item instead of inserting a new one.
 
 The following screenshots show how sharing to contacts might look like on Glass.
 
@@ -92,4 +92,4 @@ Users have the ability to share photos with your Glassware with an accompanying 
 
 _除非特别[说明](https://developers.google.com/readme/policies)，本页内容使用 [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/) 授权，示例代码使用 [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0) 授权。_
 
-_原文最后更新：2013 年 6 月 26 日。_
+_[原文](https://developers.google.com/glass/contacts)最后更新：2013 年 6 月 26 日。_
